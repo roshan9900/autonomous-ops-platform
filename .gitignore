@@ -1,0 +1,49 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment Variables & Secrets (CRITICAL: Never commit API keys!)
+.env
+.env.*
+*.env
+!.env.example
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Pytest / Test / Coverage artifacts
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# Persistence & Local Databases
+*.db
+*.sqlite
+*.sqlite3
+checkpoints/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# LangChain / LangSmith local traces
+.langchain/
