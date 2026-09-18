@@ -16,22 +16,22 @@ The system models complex enterprise Site Reliability Engineering (SRE) operatio
 
 ```mermaid
 graph TD
-    START([START]) --> PLANNER[Planner Node\n(Gemini Structured Output)]
-    PLANNER -->|plan: List[str]| EXECUTOR[Executor / Investigation Node\n(Telemetry Tools)]
+    START(["START"]) --> PLANNER["Planner Node (Gemini Structured Output)"]
+    PLANNER -->|"plan: list[str]"| EXECUTOR["Executor / Investigation Node (Telemetry Tools)"]
     
-    EXECUTOR --> SHOULD_CONTINUE{should_continue?}
-    SHOULD_CONTINUE -->|continue| EXECUTOR
-    SHOULD_CONTINUE -->|complete| HUMAN_GATE[⏸️ Human Approval Gate\ninterrupt_before]
+    EXECUTOR --> SHOULD_CONTINUE{"should_continue?"}
+    SHOULD_CONTINUE -->|"continue"| EXECUTOR
+    SHOULD_CONTINUE -->|"complete"| HUMAN_GATE["⏸️ Human Approval Gate (interrupt_before)"]
     
-    HUMAN_GATE -->|Human Operator Approves| REMEDIATION[Remediation Node\nGoverned Action Execution]
-    HUMAN_GATE -->|Rejected| ESCALATE_REJECT[Manual SRE Escalation]
+    HUMAN_GATE -->|"Human Operator Approves"| REMEDIATION["Remediation Node (Governed Action Execution)"]
+    HUMAN_GATE -->|"Rejected"| ESCALATE_REJECT["Manual SRE Escalation"]
     
-    REMEDIATION --> VERIFICATION[Verification Node\nIndependent Critic]
-    VERIFICATION --> ROUTE_VERIFY{route_verification?}
+    REMEDIATION --> VERIFICATION["Verification Node (Independent Critic)"]
+    VERIFICATION --> ROUTE_VERIFY{"route_verification?"}
     
-    ROUTE_VERIFY -->|VERIFIED_HEALTHY| END_NODE([END\nIncident Resolved])
-    ROUTE_VERIFY -->|FAILED & attempts < 2| EXECUTOR
-    ROUTE_VERIFY -->|FAILED & attempts >= 2| ESCALATE[Escalate to On-Call]
+    ROUTE_VERIFY -->|"VERIFIED_HEALTHY"| END_NODE(["END (Incident Resolved)"])
+    ROUTE_VERIFY -->|"FAILED & attempts < 2"| EXECUTOR
+    ROUTE_VERIFY -->|"FAILED & attempts >= 2"| ESCALATE["Escalate to On-Call"]
 ```
 
 ---
